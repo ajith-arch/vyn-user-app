@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/campus-map.webp" type="image/webp" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=2" />
 </head>
 <body>
   <!-- Reusable SVG symbols (exported from the VYN Figma file) -->
@@ -109,16 +109,6 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="app">
-    <!-- Desktop rail navigation (replaces bottom nav on wide screens) -->
-    <nav class="rail" aria-label="Primary">
-      <div class="rail__logo" aria-hidden="true">VYN</div>
-      <ul class="nav-list" data-nav>
-        <li><a href="#home" class="nav-item is-active" aria-current="page" data-tab="home"><svg class="icon-26"><use href="#i-home"/></svg><span>Home</span></a></li>
-        <li><a href="#deliveries" class="nav-item" data-tab="deliveries"><svg class="icon-26"><use href="#i-deliveries"/></svg><span>Deliveries</span></a></li>
-        <li><a href="#campus" class="nav-item" data-tab="campus"><svg class="icon-26"><use href="#i-campus"/></svg><span>Campus</span></a></li>
-        <li><a href="#more" class="nav-item" data-tab="more"><svg class="icon-26"><use href="#i-more"/></svg><span>More</span></a></li>
-      </ul>
-    </nav>
 
     <div class="screen">
       <!-- Header -->
@@ -300,7 +290,7 @@
 
   <div class="toast" data-toast-el role="status" aria-live="polite"></div>
 
-  <script src="js/map.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/map.js?v=2"></script>
+  <script src="js/app.js?v=2"></script>
 </body>
 </html>

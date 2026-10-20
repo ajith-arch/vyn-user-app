@@ -43,15 +43,21 @@
   /* ---------------- View state ---------------- */
   const view = { s: 1, x: 0, y: 0, min: 1, max: 4, vw: 0, vh: 0 };
 
+  // Returns false until the map has a real size (hidden tab, not laid out yet)
   function measure() {
     const r = root.getBoundingClientRect();
+    if (r.width < 2 || r.height < 2) return false;
     view.vw = r.width;
     view.vh = r.height;
     view.min = Math.max(view.vw / IMG_W, view.vh / IMG_H);
-    view.max = view.min * 4;
+    view.max = view.min * 3;
+    return true;
   }
 
   function clamp() {
+    if (!Number.isFinite(view.s) || view.s <= 0) view.s = view.min;
+    if (!Number.isFinite(view.x)) view.x = 0;
+    if (!Number.isFinite(view.y)) view.y = 0;
     view.s = Math.min(view.max, Math.max(view.min, view.s));
     const minX = view.vw - IMG_W * view.s;
     const minY = view.vh - IMG_H * view.s;
@@ -275,10 +281,12 @@
     updateCallout();
   }
 
+  // Plain scrolling keeps scrolling the page; trackpad pinch (ctrlKey) or ctrl/cmd + wheel zooms the map
   root.addEventListener("wheel", (e) => {
+    if (!e.ctrlKey && !e.metaKey) return;
     e.preventDefault();
     const rect = root.getBoundingClientRect();
-    const factor = Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0018));
+    const factor = Math.exp(-e.deltaY * 0.01);
     zoomAt(e.clientX - rect.left, e.clientY - rect.top, view.s * factor, false);
     syncLocate();
   }, { passive: false });
@@ -319,8 +327,10 @@
   }
 
   /* ---------------- Init ---------------- */
+  let ready = false;
   function init() {
-    measure();
+    if (ready || !measure()) return;
+    ready = true;
     centerOn(USER[0] + 120, USER[1] - 40, view.min * 1.35, false);
     syncLocate();
     updateCallout();
@@ -331,10 +341,11 @@
   let ro;
   if ("ResizeObserver" in window) {
     ro = new ResizeObserver(() => {
+      if (!ready) { init(); return; }
       const cx = (view.vw / 2 - view.x) / view.s;
       const cy = (view.vh / 2 - view.y) / view.s;
       const rel = view.s / view.min;
-      measure();
+      if (!measure()) return;
       centerOn(cx, cy, view.min * rel, false);
       syncLocate();
     });

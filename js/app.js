@@ -20,7 +20,7 @@
     });
   });
 
-  /* ---------------- Navigation (bottom bar + desktop rail stay in sync) ---------------- */
+  /* ---------------- Bottom navigation ---------------- */
   const TAB_LABELS = { deliveries: "Deliveries", campus: "Campus map", more: "More" };
   document.querySelectorAll("[data-nav] .nav-item").forEach((item) => {
     item.addEventListener("click", (e) => {

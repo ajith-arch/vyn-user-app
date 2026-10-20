@@ -15,11 +15,11 @@ Screens are recreated from the VYN Figma design system in plain HTML, CSS and Ja
 
 ## Home — what's included
 
-- **Live campus map** — the illustrated campus map with drag-to-pan, pinch / scroll / double-tap zoom, `+` / `−` controls and keyboard panning (arrow keys, `+`, `−`).
+- **Live campus map** — the illustrated campus map with drag-to-pan, pinch / ctrl-scroll / double-tap zoom, `+` / `−` controls and keyboard panning (arrow keys, `+`, `−`).
 - **Robots moving on real walkways**, your location pulse, a **nearest-robot callout** with a live ETA (tap any robot to inspect it), an **Avg ETA** pill and **Locate me**.
 - **Campus selector** bottom sheet (remembers your choice), **notifications** sheet, campus status strip with weather.
 - **All services** grid, **Start delivery** / **Receive a request** actions and the tip card.
-- **Responsive**: phone layout matches the 393 px Figma frame; tablets get a centred column with a taller map; desktop (≥1024 px) switches to a left navigation rail with the map as the hero beside the services.
+- **Mobile-first, mobile-only**: the layout matches the 393 px Figma frame and stays a phone-width column (max 430 px) on every screen, centred on larger displays.
 - **Accessible**: semantic landmarks, skip link, labelled controls, focus-visible rings, focus-trapped sheets with `Esc` to close, `prefers-reduced-motion` support, and status never shown by colour alone.
 
 ## Design tokens
