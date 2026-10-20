@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="VYN User — autonomous campus delivery. Send, receive and track items across campus." />
+  <title>VYN — Home</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/campus-map.webp" type="image/webp" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Reusable SVG symbols (exported from the VYN Figma file) -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-building" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 18.3333V3.33334C5 2.89131 5.17559 2.46739 5.48816 2.15483C5.80072 1.84227 6.22464 1.66667 6.66667 1.66667H13.3333C13.7754 1.66667 14.1993 1.84227 14.5118 2.15483C14.8244 2.46739 15 2.89131 15 3.33334V18.3333H5Z"/>
+      <path d="M5 10H3.33334C2.89131 10 2.46739 10.1756 2.15483 10.4882C1.84227 10.8007 1.66667 11.2246 1.66667 11.6667V16.6667C1.66667 17.1087 1.84227 17.5326 2.15483 17.8452C2.46739 18.1577 2.89131 18.3333 3.33334 18.3333H5"/>
+      <path d="M15 7.5H16.6667C17.1087 7.5 17.5326 7.6756 17.8452 7.98816C18.1577 8.30072 18.3333 8.72464 18.3333 9.16667V16.6667C18.3333 17.1087 18.1577 17.5326 17.8452 17.8452C17.5326 18.1577 17.1087 18.3333 16.6667 18.3333H15"/>
+      <path d="M8.33333 5H11.6667M8.33333 8.33333H11.6667M8.33333 11.6667H11.6667M8.33333 15H11.6667"/>
+    </symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4.5 6.75L9 11.25L13.5 6.75"/>
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 22 22" fill="none">
+      <path d="M11 15.125C13.2782 15.125 15.125 13.2782 15.125 11C15.125 8.72183 13.2782 6.875 11 6.875C8.72183 6.875 6.875 8.72183 6.875 11C6.875 13.2782 8.72183 15.125 11 15.125Z" fill="#FBBF24"/>
+      <path d="M11 2.0625V4.8125M11 17.1875V19.9375M2.0625 11H4.8125M17.1875 11H19.9375M4.675 4.675L6.6 6.6M15.4 15.4L17.325 17.325M4.675 17.325L6.6 15.4M15.4 6.6L17.325 4.675" stroke="#F59E0B" stroke-width="1.75" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-robot" viewBox="6 4 24 28" fill="none">
+      <path d="M15.2 6.8V14.5" stroke="#475569" stroke-width="1.12" stroke-linecap="round"/>
+      <path d="M15.2 6.8L20.1 8.9L15.2 11V6.8Z" fill="#F97316"/>
+      <path d="M23.6 13.8H12.4C11.2402 13.8 10.3 14.7402 10.3 15.9V18C10.3 19.1598 11.2402 20.1 12.4 20.1H23.6C24.7598 20.1 25.7 19.1598 25.7 18V15.9C25.7 14.7402 24.7598 13.8 23.6 13.8Z" fill="#1F2937"/>
+      <path d="M25.35 18.7H10.65C9.29691 18.7 8.20001 19.7969 8.20001 21.15V22.55C8.20001 23.9031 9.29691 25 10.65 25H25.35C26.7031 25 27.8 23.9031 27.8 22.55V21.15C27.8 19.7969 26.7031 18.7 25.35 18.7Z" fill="#E5E7EB" stroke="#CBD5E1" stroke-width="0.7"/>
+      <path d="M12.75 29.9C14.2964 29.9 15.55 28.6464 15.55 27.1C15.55 25.5536 14.2964 24.3 12.75 24.3C11.2036 24.3 9.95001 25.5536 9.95001 27.1C9.95001 28.6464 11.2036 29.9 12.75 29.9Z" fill="#111827"/>
+      <path d="M23.25 29.9C24.7964 29.9 26.05 28.6464 26.05 27.1C26.05 25.5536 24.7964 24.3 23.25 24.3C21.7036 24.3 20.45 25.5536 20.45 27.1C20.45 28.6464 21.7036 29.9 23.25 29.9Z" fill="#111827"/>
+    </symbol>
+    <symbol id="i-svc-send" viewBox="0 0 36 36" fill="none">
+      <rect width="36" height="36" rx="10" fill="#EAF0FE"/>
+      <use href="#i-robot" x="6" y="4" width="24" height="28"/>
+    </symbol>
+    <symbol id="i-svc-receive" viewBox="0 0 36 36" fill="none">
+      <rect width="36" height="36" rx="10" fill="#EAF0FE"/>
+      <use href="#i-robot" x="6" y="4" width="24" height="28"/>
+      <path d="M25 5.4V11M22.55 8.9L25 11.35L27.45 8.9" stroke="#F97316" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-svc-track" viewBox="0 0 36 36" fill="none">
+      <rect width="36" height="36" rx="10" fill="#EAF0FE"/>
+      <path d="M9.6 26.4C13.1 20.1 17.3 23.6 20.1 17.3" stroke="#1558F0" stroke-width="1.54" stroke-linecap="round" stroke-dasharray="2.1 2.8"/>
+      <path d="M9.6 28.64C10.8371 28.64 11.84 27.6371 11.84 26.4C11.84 25.1629 10.8371 24.16 9.6 24.16C8.36288 24.16 7.36 25.1629 7.36 26.4C7.36 27.6371 8.36288 28.64 9.6 28.64Z" fill="#EF4444"/>
+      <path d="M23.6 7.5C24.8067 7.5 25.964 7.97937 26.8173 8.83266C27.6706 9.68595 28.15 10.8433 28.15 12.05C28.15 15.55 23.6 19.75 23.6 19.75C23.6 19.75 19.05 15.55 19.05 12.05C19.05 10.8433 19.5294 9.68595 20.3827 8.83266C21.236 7.97937 22.3933 7.5 23.6 7.5Z" fill="#1558F0"/>
+      <path d="M23.6 13.73C24.5278 13.73 25.28 12.9778 25.28 12.05C25.28 11.1222 24.5278 10.37 23.6 10.37C22.6722 10.37 21.92 11.1222 21.92 12.05C21.92 12.9778 22.6722 13.73 23.6 13.73Z" fill="#fff"/>
+    </symbol>
+    <symbol id="i-svc-departments" viewBox="0 0 36 36" fill="none">
+      <rect width="36" height="36" rx="10" fill="#EAF0FE"/>
+      <path d="M10.65 17.44C12.2737 17.44 13.59 16.1237 13.59 14.5C13.59 12.8763 12.2737 11.56 10.65 11.56C9.02627 11.56 7.71 12.8763 7.71 14.5C7.71 16.1237 9.02627 17.44 10.65 17.44Z" fill="#1558F0"/>
+      <path d="M5.75 25.7C5.75 24.4004 6.26625 23.1541 7.18518 22.2352C8.1041 21.3162 9.35044 20.8 10.65 20.8C11.9496 20.8 13.1959 21.3162 14.1148 22.2352C15.0338 23.1541 15.55 24.4004 15.55 25.7H5.75Z" fill="#1558F0"/>
+      <path d="M25.35 17.44C26.9737 17.44 28.29 16.1237 28.29 14.5C28.29 12.8763 26.9737 11.56 25.35 11.56C23.7263 11.56 22.41 12.8763 22.41 14.5C22.41 16.1237 23.7263 17.44 25.35 17.44Z" fill="#16A34A"/>
+      <path d="M20.45 25.7C20.45 24.4004 20.9663 23.1541 21.8852 22.2352C22.8041 21.3162 24.0505 20.8 25.35 20.8C26.6496 20.8 27.8959 21.3162 28.8148 22.2352C29.7338 23.1541 30.25 24.4004 30.25 25.7H20.45Z" fill="#16A34A"/>
+      <path d="M18 15.06C19.8557 15.06 21.36 13.5557 21.36 11.7C21.36 9.84435 19.8557 8.34 18 8.34C16.1443 8.34 14.64 9.84435 14.64 11.7C14.64 13.5557 16.1443 15.06 18 15.06Z" fill="#F59E0B"/>
+      <path d="M12.05 25.7C12.05 24.122 12.6769 22.6086 13.7927 21.4927C14.9085 20.3769 16.4219 19.75 18 19.75C19.578 19.75 21.0914 20.3769 22.2073 21.4927C23.3231 22.6086 23.95 24.122 23.95 25.7H12.05Z" fill="#F59E0B"/>
+    </symbol>
+    <symbol id="i-send" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.83333" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13.3247 19.8788C13.3595 19.9656 13.42 20.0397 13.4982 20.0911C13.5763 20.1425 13.6683 20.1687 13.7618 20.1663C13.8553 20.164 13.9458 20.133 14.0212 20.0777C14.0966 20.0224 14.1532 19.9453 14.1836 19.8568L20.1419 2.44018C20.1713 2.35895 20.1769 2.27106 20.1581 2.18677C20.1393 2.10248 20.0969 2.02529 20.0358 1.96422C19.9747 1.90316 19.8975 1.86075 19.8132 1.84195C19.729 1.82316 19.6411 1.82876 19.5598 1.85809L2.14317 7.81643C2.0547 7.84676 1.97764 7.90344 1.92232 7.97883C1.86699 8.05423 1.83606 8.14475 1.83366 8.23824C1.83127 8.33173 1.85753 8.42371 1.90892 8.50184C1.96031 8.57998 2.03437 8.64052 2.12117 8.67534L9.39033 11.5903C9.62013 11.6823 9.82891 11.8199 10.0041 11.9948C10.1793 12.1697 10.3172 12.3782 10.4097 12.6078L13.3247 19.8788Z"/>
+      <path d="M20.0328 1.96808L10.0045 11.9955"/>
+    </symbol>
+    <symbol id="i-inbox" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.83333" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.1667 11H14.6667L12.8333 13.75H9.16666L7.33333 11H1.83333"/>
+      <path d="M4.99583 4.68419L1.83333 11V16.5C1.83333 16.9863 2.02648 17.4526 2.3703 17.7964C2.71412 18.1402 3.18043 18.3334 3.66666 18.3334H18.3333C18.8196 18.3334 19.2859 18.1402 19.6297 17.7964C19.9735 17.4526 20.1667 16.9863 20.1667 16.5V11L17.0042 4.68419C16.8524 4.37874 16.6184 4.12169 16.3285 3.94194C16.0387 3.76219 15.7044 3.66687 15.3633 3.66669H6.63666C6.29558 3.66687 5.96132 3.76219 5.67145 3.94194C5.38158 4.12169 5.14761 4.37874 4.99583 4.68419Z"/>
+    </symbol>
+    <symbol id="i-bulb" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.83333" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13.75 12.8333C13.9333 11.9166 14.3917 11.275 15.125 10.5416C16.0417 9.71665 16.5 8.52498 16.5 7.33331C16.5 5.87462 15.9205 4.47568 14.8891 3.44423C13.8576 2.41278 12.4587 1.83331 11 1.83331C9.54131 1.83331 8.14236 2.41278 7.11091 3.44423C6.07946 4.47568 5.5 5.87462 5.5 7.33331C5.5 8.24998 5.68333 9.34998 6.875 10.5416C7.51667 11.1833 8.06667 11.9166 8.25 12.8333"/>
+      <path d="M8.25 16.5H13.75"/><path d="M9.16667 20.1667H12.8333"/>
+    </symbol>
+    <symbol id="i-home" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.16667" stroke-linecap="round" stroke-linejoin="round">
+      <path style="fill: var(--home-fill, none)" d="M3.25 10.8333C3.24992 10.5182 3.31861 10.2068 3.45127 9.92087C3.58393 9.63497 3.77736 9.38145 4.01808 9.17801L11.6014 2.67909C11.9925 2.34857 12.488 2.16724 13 2.16724C13.512 2.16724 14.0075 2.34857 14.3986 2.67909L21.9819 9.17801C22.2226 9.38145 22.4161 9.63497 22.5487 9.92087C22.6814 10.2068 22.7501 10.5182 22.75 10.8333V20.5833C22.75 21.158 22.5217 21.7091 22.1154 22.1154C21.7091 22.5217 21.158 22.75 20.5833 22.75H5.41667C4.84203 22.75 4.29093 22.5217 3.8846 22.1154C3.47827 21.7091 3.25 21.158 3.25 20.5833V10.8333Z"/>
+      <path style="stroke: var(--home-door, currentColor)" d="M16.25 22.75V14.0833C16.25 13.796 16.1359 13.5205 15.9327 13.3173C15.7295 13.1141 15.454 13 15.1667 13H10.8333C10.546 13 10.2705 13.1141 10.0673 13.3173C9.86414 13.5205 9.75 13.796 9.75 14.0833V22.75"/>
+    </symbol>
+    <symbol id="i-deliveries" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.16667" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11.9167 23.5408C12.246 23.731 12.6197 23.8311 13 23.8311C13.3803 23.8311 13.754 23.731 14.0833 23.5408L21.6667 19.2075C21.9957 19.0175 22.269 18.7444 22.4592 18.4154C22.6493 18.0865 22.7496 17.7133 22.75 17.3333V8.66666C22.7496 8.28671 22.6493 7.91354 22.4592 7.58459C22.269 7.25564 21.9957 6.98247 21.6667 6.7925L14.0833 2.45916C13.754 2.269 13.3803 2.16888 13 2.16888C12.6197 2.16888 12.246 2.269 11.9167 2.45916L4.33333 6.7925C4.00428 6.98247 3.73098 7.25564 3.54083 7.58459C3.35069 7.91354 3.25039 8.28671 3.25 8.66666V17.3333C3.25039 17.7133 3.35069 18.0865 3.54083 18.4154C3.73098 18.7444 4.00428 19.0175 4.33333 19.2075L11.9167 23.5408Z"/>
+      <path d="M13 23.8333V13"/><path d="M3.56416 7.58331L13 13L22.4358 7.58331"/><path d="M8.125 4.62585L17.875 10.205"/>
+    </symbol>
+    <symbol id="i-campus" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.16667" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15.2815 6.01575C15.5822 6.16602 15.9138 6.24426 16.25 6.24426C16.5862 6.24426 16.9178 6.16602 17.2185 6.01575L21.1824 4.03325C21.3477 3.95065 21.5314 3.91171 21.716 3.92011C21.9005 3.92852 22.0799 3.984 22.237 4.08127C22.3941 4.17855 22.5237 4.31439 22.6135 4.47588C22.7033 4.63737 22.7503 4.81914 22.75 5.00391V18.8316C22.7499 19.0327 22.6938 19.2298 22.588 19.4009C22.4822 19.572 22.3308 19.7102 22.1509 19.8001L17.2185 22.2668C16.9178 22.4171 16.5862 22.4953 16.25 22.4953C15.9138 22.4953 15.5822 22.4171 15.2815 22.2668L10.7185 19.9853C10.4178 19.8351 10.0862 19.7568 9.75 19.7568C9.41381 19.7568 9.08224 19.8351 8.7815 19.9853L4.81759 21.9678C4.65222 22.0505 4.46845 22.0894 4.28378 22.081C4.09911 22.0725 3.91967 22.0169 3.76255 21.9195C3.60542 21.8221 3.47584 21.6861 3.38612 21.5245C3.29641 21.3629 3.24955 21.1809 3.25 20.9961V7.1695C3.25011 6.96836 3.30621 6.77123 3.41202 6.60018C3.51783 6.42912 3.66917 6.2909 3.84909 6.201L8.7815 3.73425C9.08224 3.58397 9.41381 3.50574 9.75 3.50574C10.0862 3.50574 10.4178 3.58397 10.7185 3.73425L15.2815 6.01575Z"/>
+      <path d="M16.25 6.24432V22.4943"/><path d="M9.75 3.50568V19.7557"/>
+    </symbol>
+    <symbol id="i-more" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.16667" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="13" cy="13" r="1.08"/><circle cx="20.58" cy="13" r="1.08"/><circle cx="5.42" cy="13" r="1.08"/>
+    </symbol>
+    <symbol id="i-locate" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.83333" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1.83 11H4.58M17.42 11H20.17M11 1.83V4.58M11 17.42V20.17"/>
+      <circle cx="11" cy="11" r="6.42"/><circle cx="11" cy="11" r="2.75"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"/><path d="m7.5 4.27 9 5.15"/>
+    </symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="app">
+    <!-- Desktop rail navigation (replaces bottom nav on wide screens) -->
+    <nav class="rail" aria-label="Primary">
+      <div class="rail__logo" aria-hidden="true">VYN</div>
+      <ul class="nav-list" data-nav>
+        <li><a href="#home" class="nav-item is-active" aria-current="page" data-tab="home"><svg class="icon-26"><use href="#i-home"/></svg><span>Home</span></a></li>
+        <li><a href="#deliveries" class="nav-item" data-tab="deliveries"><svg class="icon-26"><use href="#i-deliveries"/></svg><span>Deliveries</span></a></li>
+        <li><a href="#campus" class="nav-item" data-tab="campus"><svg class="icon-26"><use href="#i-campus"/></svg><span>Campus</span></a></li>
+        <li><a href="#more" class="nav-item" data-tab="more"><svg class="icon-26"><use href="#i-more"/></svg><span>More</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="screen">
+      <!-- Header -->
+      <header class="header">
+        <a href="#home" class="logo" aria-label="VYN home">VYN</a>
+        <button class="campus-select" type="button" data-open-sheet="campus" aria-haspopup="dialog" aria-label="Change campus. Current campus: Riverside Campus">
+          <svg class="icon-20 muted"><use href="#i-building"/></svg>
+          <span class="campus-select__name" data-campus-name>Riverside Campus</span>
+          <svg class="icon-18"><use href="#i-chevron-down"/></svg>
+        </button>
+        <button class="avatar" type="button" data-open-sheet="notifications" aria-haspopup="dialog" aria-label="Account and notifications, 2 new">
+          <span aria-hidden="true">JD</span>
+          <span class="avatar__dot" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <main id="main" class="content">
+        <!-- Campus status -->
+        <section class="status-strip" aria-label="Campus delivery status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <div class="status-strip__text">
+            <p class="status-strip__title">Campus delivery <span class="sr-only">is operating normally.</span></p>
+            <p class="status-strip__detail"><span data-available-count>8</span> robots available · Campus mode active</p>
+          </div>
+          <span class="divider-v" aria-hidden="true"></span>
+          <div class="weather" aria-label="Weather: 72 degrees Fahrenheit, sunny">
+            <svg class="icon-22" aria-hidden="true"><use href="#i-sun"/></svg>
+            <div class="weather__text" aria-hidden="true">
+              <span class="weather__temp">72°F</span>
+              <span class="weather__cond">Sunny</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Live campus map -->
+        <section class="map-card" aria-label="Live campus map">
+          <div class="map" data-map tabindex="0" aria-describedby="map-help">
+            <div class="map__layer" data-map-layer>
+              <picture>
+                <source srcset="assets/campus-map.webp" type="image/webp" />
+                <img class="map__img" src="assets/campus-map.jpg" width="1420" height="1058" alt="Illustrated map of Riverside Campus showing buildings, paths and South Campus Drive" draggable="false" />
+              </picture>
+              <div class="map__markers" data-markers></div>
+            </div>
+            <p id="map-help" class="sr-only">Drag to move the map. Pinch, scroll or use the plus and minus buttons to zoom. Use arrow keys to pan when the map is focused.</p>
+          </div>
+
+          <!-- Overlays -->
+          <div class="map-callout" data-callout role="status" aria-live="polite">
+            <span class="map-callout__icon" aria-hidden="true"><svg viewBox="6 4 24 28"><use href="#i-robot"/></svg></span>
+            <span class="map-callout__text">
+              <strong data-callout-name>VYN-107</strong>
+              <span data-callout-eta>2 min away</span>
+            </span>
+          </div>
+
+          <div class="map-pill map-pill--eta">
+            <svg class="icon-16 brand" aria-hidden="true"><use href="#i-clock"/></svg>
+            <span>Avg ETA <strong data-avg-eta>5–9 min</strong></span>
+          </div>
+
+          <div class="map-controls" role="group" aria-label="Map controls">
+            <button type="button" class="map-btn" data-zoom="in" aria-label="Zoom in"><svg class="icon-20"><use href="#i-plus"/></svg></button>
+            <button type="button" class="map-btn" data-zoom="out" aria-label="Zoom out"><svg class="icon-20"><use href="#i-minus"/></svg></button>
+          </div>
+          <button type="button" class="map-btn map-btn--locate" data-locate aria-label="Center map on my location">
+            <svg class="icon-22 brand"><use href="#i-locate"/></svg>
+          </button>
+        </section>
+
+        <div class="side">
+          <!-- Services -->
+          <section class="services" aria-labelledby="services-title">
+            <div class="section-header">
+              <h2 id="services-title" class="section-title">All services</h2>
+              <a class="link" href="#history" data-toast="Opening delivery history…">View history</a>
+            </div>
+            <div class="service-grid">
+              <a class="service-card" href="#send" data-toast="Opening Send item…">
+                <svg class="icon-36" aria-hidden="true"><use href="#i-svc-send"/></svg>
+                <span class="service-card__text"><span class="service-card__title">Send item</span><span class="service-card__sub">Across campus</span></span>
+              </a>
+              <a class="service-card" href="#receive" data-toast="Opening Receive item…">
+                <svg class="icon-36" aria-hidden="true"><use href="#i-svc-receive"/></svg>
+                <span class="service-card__text"><span class="service-card__title">Receive item</span><span class="service-card__sub">Get a delivery</span></span>
+              </a>
+              <a class="service-card" href="#track" data-toast="Opening Track delivery…">
+                <svg class="icon-36" aria-hidden="true"><use href="#i-svc-track"/></svg>
+                <span class="service-card__text"><span class="service-card__title">Track delivery</span><span class="service-card__sub">Live location</span></span>
+              </a>
+              <a class="service-card" href="#departments" data-toast="Opening Departments…">
+                <svg class="icon-36" aria-hidden="true"><use href="#i-svc-departments"/></svg>
+                <span class="service-card__text"><span class="service-card__title">Departments</span><span class="service-card__sub">Pre-approved list</span></span>
+              </a>
+            </div>
+          </section>
+
+          <!-- Primary actions -->
+          <section class="actions" aria-label="Quick actions">
+            <a class="btn btn--primary" href="#send" data-toast="Starting a new delivery…">
+              <svg class="icon-22" aria-hidden="true"><use href="#i-send"/></svg><span>Start delivery</span>
+            </a>
+            <a class="btn btn--secondary" href="#receive" data-toast="Opening incoming requests…">
+              <svg class="icon-22" aria-hidden="true"><use href="#i-inbox"/></svg><span>Receive a request</span>
+            </a>
+          </section>
+
+          <!-- Tip -->
+          <aside class="tip" aria-label="Tip">
+            <span class="tip__icon" aria-hidden="true"><svg class="icon-22 brand"><use href="#i-bulb"/></svg></span>
+            <span class="tip__rule" aria-hidden="true"></span>
+            <div class="tip__text">
+              <p class="tip__eyebrow">TIP</p>
+              <p class="tip__body">Robots operate across campus paths and can deliver to academic, residential and administrative buildings.</p>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <!-- Mobile bottom navigation -->
+    <nav class="bottom-nav" aria-label="Primary">
+      <ul class="nav-list" data-nav>
+        <li><a href="#home" class="nav-item is-active" aria-current="page" data-tab="home"><svg class="icon-26"><use href="#i-home"/></svg><span>Home</span></a></li>
+        <li><a href="#deliveries" class="nav-item" data-tab="deliveries"><svg class="icon-26"><use href="#i-deliveries"/></svg><span>Deliveries</span></a></li>
+        <li><a href="#campus" class="nav-item" data-tab="campus"><svg class="icon-26"><use href="#i-campus"/></svg><span>Campus</span></a></li>
+        <li><a href="#more" class="nav-item" data-tab="more"><svg class="icon-26"><use href="#i-more"/></svg><span>More</span></a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Bottom sheets -->
+  <div class="sheet-backdrop" data-sheet-backdrop hidden></div>
+
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-campus-title" data-sheet="campus" hidden>
+    <div class="sheet__grip" aria-hidden="true"></div>
+    <div class="sheet__head">
+      <h2 id="sheet-campus-title" class="sheet__title">Choose campus</h2>
+      <button type="button" class="icon-btn" data-close-sheet aria-label="Close"><svg class="icon-20"><use href="#i-x"/></svg></button>
+    </div>
+    <ul class="option-list" role="radiogroup" aria-labelledby="sheet-campus-title" data-campus-list>
+      <li><button type="button" class="option" role="radio" aria-checked="true" data-campus="Riverside Campus" data-robots="8">
+        <span class="option__icon"><svg class="icon-20"><use href="#i-building"/></svg></span>
+        <span class="option__text"><span class="option__title">Riverside Campus</span><span class="option__sub">8 robots available · Campus mode active</span></span>
+        <svg class="icon-20 option__check" aria-hidden="true"><use href="#i-check"/></svg>
+      </button></li>
+      <li><button type="button" class="option" role="radio" aria-checked="false" data-campus="North Campus" data-robots="5">
+        <span class="option__icon"><svg class="icon-20"><use href="#i-building"/></svg></span>
+        <span class="option__text"><span class="option__title">North Campus</span><span class="option__sub">5 robots available · Residential zone</span></span>
+        <svg class="icon-20 option__check" aria-hidden="true"><use href="#i-check"/></svg>
+      </button></li>
+      <li><button type="button" class="option" role="radio" aria-checked="false" data-campus="Health Sciences" data-robots="3">
+        <span class="option__icon"><svg class="icon-20"><use href="#i-building"/></svg></span>
+        <span class="option__text"><span class="option__title">Health Sciences</span><span class="option__sub">3 robots available · Restricted hours</span></span>
+        <svg class="icon-20 option__check" aria-hidden="true"><use href="#i-check"/></svg>
+      </button></li>
+    </ul>
+  </div>
+
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-notif-title" data-sheet="notifications" hidden>
+    <div class="sheet__grip" aria-hidden="true"></div>
+    <div class="sheet__head">
+      <h2 id="sheet-notif-title" class="sheet__title">Notifications</h2>
+      <button type="button" class="icon-btn" data-close-sheet aria-label="Close"><svg class="icon-20"><use href="#i-x"/></svg></button>
+    </div>
+    <ul class="notif-list">
+      <li class="notif">
+        <span class="notif__icon notif__icon--brand"><svg class="icon-20"><use href="#i-package"/></svg></span>
+        <span class="option__text"><span class="option__title">Package from Maya Chen</span><span class="option__sub">Arrives at Science Hall in about 12 min</span></span>
+        <span class="notif__time">Now</span>
+      </li>
+      <li class="notif">
+        <span class="notif__icon notif__icon--success"><svg class="icon-20"><use href="#i-check-circle"/></svg></span>
+        <span class="option__text"><span class="option__title">Delivered to Registrar Office</span><span class="option__sub">Front desk verified with code at 10:41 AM</span></span>
+        <span class="notif__time">2h</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="toast" data-toast-el role="status" aria-live="polite"></div>
+
+  <script src="js/map.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
