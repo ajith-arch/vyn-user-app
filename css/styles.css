@@ -71,7 +71,7 @@ img { display: block; max-width: none; }
 .icon-20 { width: 20px; height: 20px; flex: none; }
 .icon-22 { width: 22px; height: 22px; flex: none; }
 .icon-26 { width: 26px; height: 26px; flex: none; }
-.icon-36 { width: 36px; height: 36px; flex: none; }
+.icon-36 { width: 40px; height: 40px; flex: none; }
 .muted { color: var(--text-2); }
 .brand { color: var(--brand); }
 
@@ -214,21 +214,38 @@ img { display: block; max-width: none; }
 }
 .marker__body { position: absolute; transform: translate(-50%, -50%); }
 
+/* Robot pins — Uber-style: dark disc, white robot; nearest = brand, busy = muted + clock badge */
 .robot-pin {
+  position: relative;
   display: grid; place-items: center;
-  width: 34px; height: 34px;
-  background: #fff;
+  width: 32px; height: 32px;
+  color: #fff;
+  --robot-strip: var(--text);
+  background: var(--text);
+  border: 2px solid #fff;
   border-radius: 50%;
-  box-shadow: var(--shadow-float);
-  transition: transform .2s var(--ease), box-shadow .2s;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, .28), 0 0 0 1px rgba(15, 23, 42, .06);
+  transition: transform .2s var(--ease), background-color .2s, width .2s, height .2s;
+  cursor: pointer;
 }
-.robot-pin svg { width: 20px; height: 23px; }
+.robot-pin svg { width: 18px; height: 18px; }
 .robot-pin:hover { transform: scale(1.08); }
-.marker.is-nearest .robot-pin { box-shadow: 0 0 0 3px var(--brand), var(--shadow-float); }
-.marker.is-busy .robot-pin::after {
-  content: ""; position: absolute; right: 1px; top: 1px;
-  width: 9px; height: 9px; border-radius: 50%;
-  background: var(--warning); border: 2px solid #fff;
+.marker.is-nearest { z-index: 2; }
+.marker.is-nearest .robot-pin {
+  width: 40px; height: 40px;
+  background: var(--brand);
+  --robot-strip: var(--brand);
+  border-width: 3px;
+  box-shadow: 0 0 0 6px rgba(21, 88, 240, .18), 0 4px 12px rgba(21, 88, 240, .35);
+}
+.marker.is-nearest .robot-pin svg { width: 22px; height: 22px; }
+.marker.is-busy .robot-pin { background: #64748b; --robot-strip: #64748b; }
+.robot-pin__badge {
+  position: absolute; right: -4px; top: -4px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--warning) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round'%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E") center / 10px no-repeat;
+  border: 2px solid #fff;
 }
 
 .user-pin { width: 18px; height: 18px; }
@@ -272,7 +289,8 @@ img { display: block; max-width: none; }
   border-radius: var(--r-10);
   background: var(--brand-soft);
 }
-.map-callout__icon svg { width: 22px; height: 25px; }
+.map-callout__icon { color: var(--text); --robot-strip: var(--brand-soft); }
+.map-callout__icon svg { width: 24px; height: 24px; }
 .map-callout__text { display: flex; flex-direction: column; min-width: 0; }
 .map-callout__text strong { font-size: 15px; line-height: 20px; font-weight: 600; }
 .map-callout__text span { font-size: 13px; line-height: 18px; color: var(--text-2); }

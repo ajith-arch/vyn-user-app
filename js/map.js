@@ -120,7 +120,7 @@
   );
   place(userMarker, USER[0], USER[1]);
 
-  const robotSvg = `<svg viewBox="6 4 24 28" aria-hidden="true"><use href="#i-robot"/></svg>`;
+  const robotSvg = `<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-robot"/></svg>`;
   ROBOTS.forEach((r) => {
     r.segLens = [];
     r.len = 0;
@@ -130,7 +130,7 @@
       r.len += l;
     }
     r.dir = 1;
-    r.el = makeMarker("marker--robot" + (r.busy ? " is-busy" : ""), `<div class="robot-pin">${robotSvg}</div>`, `${r.id}${r.busy ? ", on a delivery" : ""}`);
+    r.el = makeMarker("marker--robot" + (r.busy ? " is-busy" : ""), `<div class="robot-pin">${robotSvg}${r.busy ? '<span class="robot-pin__badge" aria-hidden="true"></span>' : ""}</div>`, `${r.id}${r.busy ? ", on a delivery" : ""}`);
     r.el.dataset.robot = r.id;
     position(r);
   });
