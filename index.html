@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/campus-map.webp" type="image/webp" />
-  <link rel="stylesheet" href="css/styles.css?v=3" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
 </head>
 <body>
   <!-- Reusable SVG symbols (exported from the VYN Figma file) -->
@@ -196,22 +196,22 @@
           <section class="services" aria-labelledby="services-title">
             <div class="section-header">
               <h2 id="services-title" class="section-title">All services</h2>
-              <a class="link" href="#history" data-toast="Opening delivery history…">View history</a>
+              <a class="link" href="screens.html">View history</a>
             </div>
             <div class="service-grid">
-              <a class="service-card" href="#send" data-toast="Opening Send item…">
+              <a class="service-card" href="send.html#person">
                 <svg class="icon-36" aria-hidden="true"><use href="#i-svc-send"/></svg>
                 <span class="service-card__text"><span class="service-card__title">Send item</span><span class="service-card__sub">Across campus</span></span>
               </a>
-              <a class="service-card" href="#receive" data-toast="Opening Receive item…">
+              <a class="service-card" href="handoff.html">
                 <svg class="icon-36" aria-hidden="true"><use href="#i-svc-receive"/></svg>
                 <span class="service-card__text"><span class="service-card__title">Receive item</span><span class="service-card__sub">Get a delivery</span></span>
               </a>
-              <a class="service-card" href="#track" data-toast="Opening Track delivery…">
+              <a class="service-card" href="tracking.html">
                 <svg class="icon-36" aria-hidden="true"><use href="#i-svc-track"/></svg>
                 <span class="service-card__text"><span class="service-card__title">Track delivery</span><span class="service-card__sub">Live location</span></span>
               </a>
-              <a class="service-card" href="#departments" data-toast="Opening Departments…">
+              <a class="service-card" href="send.html#department">
                 <svg class="icon-36" aria-hidden="true"><use href="#i-svc-departments"/></svg>
                 <span class="service-card__text"><span class="service-card__title">Departments</span><span class="service-card__sub">Pre-approved list</span></span>
               </a>
@@ -220,10 +220,10 @@
 
           <!-- Primary actions -->
           <section class="actions" aria-label="Quick actions">
-            <a class="btn btn--primary" href="#send" data-toast="Starting a new delivery…">
+            <a class="btn btn--primary" href="send.html#department">
               <svg class="icon-22" aria-hidden="true"><use href="#i-send"/></svg><span>Start delivery</span>
             </a>
-            <a class="btn btn--secondary" href="#receive" data-toast="Opening incoming requests…">
+            <a class="btn btn--secondary" href="handoff.html">
               <svg class="icon-22" aria-hidden="true"><use href="#i-inbox"/></svg><span>Receive a request</span>
             </a>
           </section>
@@ -245,9 +245,9 @@
     <nav class="bottom-nav" aria-label="Primary">
       <ul class="nav-list" data-nav>
         <li><a href="#home" class="nav-item is-active" aria-current="page" data-tab="home"><svg class="icon-26"><use href="#i-home"/></svg><span>Home</span></a></li>
-        <li><a href="#deliveries" class="nav-item" data-tab="deliveries"><svg class="icon-26"><use href="#i-deliveries"/></svg><span>Deliveries</span></a></li>
+        <li><a href="tracking.html" class="nav-item" data-tab="deliveries"><svg class="icon-26"><use href="#i-deliveries"/></svg><span>Deliveries</span></a></li>
         <li><a href="#campus" class="nav-item" data-tab="campus"><svg class="icon-26"><use href="#i-campus"/></svg><span>Campus</span></a></li>
-        <li><a href="#more" class="nav-item" data-tab="more"><svg class="icon-26"><use href="#i-more"/></svg><span>More</span></a></li>
+        <li><a href="screens.html" class="nav-item" data-tab="more"><svg class="icon-26"><use href="#i-more"/></svg><span>More</span></a></li>
       </ul>
     </nav>
   </div>
@@ -302,7 +302,7 @@
 
   <div class="toast" data-toast-el role="status" aria-live="polite"></div>
 
-  <script src="js/map.js?v=3"></script>
-  <script src="js/app.js?v=3"></script>
+  <script src="js/map.js?v=4"></script>
+  <script src="js/app.js?v=4"></script>
 </body>
 </html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f2f5fa" />
+  <title>VYN — Review delivery</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/flow.css?v=4" />
+</head>
+<body class="flow">
+  <div class="screen screen--flow">
+    <main class="flow-content" id="main">
+      <header class="topbar">
+        <a class="back-btn" href="send.html#department" data-back aria-label="Back"><svg class="g" aria-hidden="true"><use href="#g-arrow-left"/></svg></a>
+        <h1 class="topbar__title">Review delivery</h1>
+        <span></span>
+      </header>
+
+      <section class="card" aria-label="Delivery summary">
+        <span class="status-chip status-chip--success"><svg class="g" aria-hidden="true"><use href="#g-check-circle"/></svg><span data-chip-label>Accepted automatically</span></span>
+        <div class="headline"><p class="headline__title">Arrives by 10:42 AM</p><p class="headline__sub" data-bind="to">To Registrar Office · Admin Building front desk</p></div>
+        <div class="route-map" style="--ar:329/148" data-route="A,B,C,D,E" data-dest-label="Registrar Office" role="img" aria-label="Route from Student Union to the Registrar Office"></div>
+        <p class="conf-note"><svg class="g16" aria-hidden="true"><use href="#g-info"/></svg><span>High confidence · based on current campus paths. We’ll tell you if this changes.</span></p>
+      </section>
+      <div class="sec-head"><h2 class="sec-title">Details</h2><a class="link" href="send.html#department">Edit</a></div>
+      <section class="card card--rows">
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-building"/></svg></span><span class="detail__text"><span class="detail__label">To</span><span class="detail__value" data-bind="dest">Registrar Office · front desk</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-map-pin"/></svg></span><span class="detail__text"><span class="detail__label">Pickup</span><span class="detail__value">Student Union · Lobby</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-clock"/></svg></span><span class="detail__text"><span class="detail__label">Robot ready</span><span class="detail__value">Now · in about 4 min</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-file-text"/></svg></span><span class="detail__text"><span class="detail__label">Item</span><span class="detail__value" data-bind="item">Documents · Small</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-pencil"/></svg></span><span class="detail__text"><span class="detail__label">Note</span><span class="detail__value" data-bind="note">“Transcript request form”</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-shield-check"/></svg></span><span class="detail__text"><span class="detail__label">Handoff</span><span class="detail__value">Desk staff verify with a pickup code</span></span></div>
+      </section>
+      <div class="notice notice--info" role="note"><svg class="g" aria-hidden="true"><use href="#g-check-circle"/></svg><div class="notice__text"><p class="notice__title">You’re done once it’s loaded</p><p class="notice__body">Place the item, close the lid and walk away. We’ll confirm when the desk receives it.</p></div></div>
+    </main>
+    <div class="action-bar">
+      <a class="btn btn--primary" href="assigned.html" data-loading="Sending…"><svg class="g" aria-hidden="true"><use href="#g-send"/></svg><span data-label>Confirm &amp; send</span></a>
+      <a class="btn btn--ghost" href="send.html#department"><svg class="g" aria-hidden="true"><use href="#g-pencil"/></svg><span data-label>Edit details</span></a>
+      
+    </div>
+  </div>
+  <div class="toast" data-toast-el role="status" aria-live="polite"></div>
+  <script src="js/icons.js?v=4"></script>
+  <script src="js/routemap.js?v=4"></script>
+  <script src="js/flow.js?v=4"></script>
+  <script>
+(function(){
+  const d = window.VYN.store.get('dept', null);
+  if (!d) return;
+  const set = (k, v) => { const el = document.querySelector(`[data-bind="${k}"]`); if (el && v) el.textContent = v; };
+  set('to', `To ${d.name} · ${d.drop.split(' · ')[0]}`);
+  set('dest', `${d.name} · front desk`);
+  set('item', `${d.item} · Small`);
+  set('note', d.note ? `“${d.note}”` : 'No note');
+})();
+</script>
+</body>
+</html>

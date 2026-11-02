@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f2f5fa" />
+  <title>VYN — Robot assigned</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/flow.css?v=4" />
+</head>
+<body class="flow">
+  <div class="screen screen--flow">
+    <main class="flow-content" id="main">
+      <header class="topbar">
+        <a class="back-btn" href="index.html" data-back aria-label="Back"><svg class="g" aria-hidden="true"><use href="#g-arrow-left"/></svg></a>
+        <h1 class="topbar__title">Request sent</h1>
+        <span></span>
+      </header>
+
+      <div class="confirm-hero">
+        <span class="confirm-hero__icon pop-in"><svg class="g" aria-hidden="true"><use href="#g-check"/></svg></span>
+        <p class="confirm-hero__title">Robot assigned</p>
+        <p class="confirm-hero__sub">VYN-07 is on its way to your pickup point.</p>
+      </div>
+      <section class="card" aria-label="Robot arrival">
+        <span class="status-chip status-chip--brand" data-assigned-chip><svg class="g" aria-hidden="true"><use href="#g-navigation"/></svg><span data-chip-label>Heading to you</span></span>
+        <div class="headline"><p class="confirm-hero__title" style="text-align:left" aria-live="polite" data-eta>Arrives in 4 min</p><p class="headline__sub">At Student Union · Lobby entrance</p></div>
+        <div class="route-map" style="--ar:329/140" data-route="E,D,C,B,A" data-cur="1,0.45" data-cur-glyph="robot" data-cur-label="VYN-07" data-dest-glyph="map-pin" data-dest-label="Your pickup point" data-live="75" role="img" aria-label="VYN-07 heading to Student Union lobby"></div>
+      </section>
+      <section class="card card--center" aria-label="Loading code">
+        <p class="card__label" style="font-size:14px;line-height:20px">Your loading code</p>
+        <div class="code" role="img" aria-label="Loading code 4 8 2 1"><span class="code__digit" aria-hidden="true">4</span><span class="code__digit" aria-hidden="true">8</span><span class="code__digit" aria-hidden="true">2</span><span class="code__digit" aria-hidden="true">1</span></div>
+        <p class="code-caption">Enter it on the robot’s lid to open the compartment.</p>
+      </section>
+      <div class="sec-head"><h2 class="sec-title">Get ready</h2></div>
+      <section class="card">
+        <ol class="steps"><li class="step">Have your documents ready — they fit the small compartment.</li><li class="step">Meet the robot at the Student Union lobby entrance.</li><li class="step">Enter code 4821, place the item inside and close the lid.</li><li class="step">That’s it. You can walk away — we’ll track it from here.</li></ol>
+      </section>
+      <section class="card card--rows">
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-map-pin"/></svg></span><span class="detail__text"><span class="detail__label">Pickup</span><span class="detail__value">Student Union · Lobby</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-building"/></svg></span><span class="detail__text"><span class="detail__label">Destination</span><span class="detail__value" data-bind="dest">Registrar Office · front desk</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-file-text"/></svg></span><span class="detail__text"><span class="detail__label">Item</span><span class="detail__value" data-bind="item">Documents · Small</span></span></div>
+      </section>
+    </main>
+    <div class="action-bar">
+      <a class="btn btn--primary" href="tracking.html"><svg class="g" aria-hidden="true"><use href="#g-navigation"/></svg><span data-label>Track mission</span></a>
+      <a class="btn btn--secondary" href="send.html#department"><svg class="g" aria-hidden="true"><use href="#g-pencil"/></svg><span data-label>Edit request</span></a>
+      
+    </div>
+  </div>
+  <div class="toast" data-toast-el role="status" aria-live="polite"></div>
+  <script src="js/icons.js?v=4"></script>
+  <script src="js/routemap.js?v=4"></script>
+  <script src="js/flow.js?v=4"></script>
+  <script>
+(function(){
+  const d = window.VYN.store.get('dept', null);
+  if (d) { document.querySelector('[data-bind="dest"]').textContent = `${d.name} · front desk`; document.querySelector('[data-bind="item"]').textContent = `${d.item} · Small`; }
+  const map = document.querySelector('.route-map'), eta = document.querySelector('[data-eta]'), chip = document.querySelector('[data-assigned-chip]');
+  let start = null, last = '';
+  map.addEventListener('routeprogress', e => {
+    if (start === null) start = e.detail;
+    const left = (1 - e.detail) / (1 - start);
+    const text = e.detail >= 1 ? 'Robot is here' : `Arrives in ${Math.max(1, Math.ceil(left * 4))} min`;
+    if (text !== last) { eta.textContent = text; last = text; }
+    if (e.detail >= 1) { chip.className = 'status-chip status-chip--success'; chip.querySelector('use').setAttribute('href', '#g-check-circle'); chip.querySelector('[data-chip-label]').textContent = 'At your pickup point'; }
+  });
+})();
+</script>
+</body>
+</html>

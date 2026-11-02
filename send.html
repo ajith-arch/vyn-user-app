@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f2f5fa" />
+  <title>VYN — Send item</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/flow.css?v=4" />
+</head>
+<body class="flow">
+  <div class="screen screen--flow">
+    <main class="flow-content" id="main">
+      <header class="topbar">
+        <a class="back-btn" href="index.html" data-back aria-label="Back"><svg class="g" aria-hidden="true"><use href="#g-arrow-left"/></svg></a>
+        <h1 class="topbar__title">Send item</h1>
+        <a class="topbar__trail" href="#" data-toast="Help opens a chat with campus delivery support">Help</a>
+      </header>
+
+      <div class="seg" role="tablist" aria-label="Send to" data-seg data-seg-panels="send" data-seg-hash>
+        <button type="button" class="seg__btn" role="tab" aria-selected="true" data-value="person"><svg class="g18" aria-hidden="true"><use href="#g-user"/></svg>Person</button>
+        <button type="button" class="seg__btn" role="tab" aria-selected="false" data-value="department"><svg class="g18" aria-hidden="true"><use href="#g-building"/></svg>Department</button>
+      </div>
+
+      <!-- ===== Person ===== -->
+      <div class="g12" data-panel="send:person" style="gap:16px">
+        <label class="field"><svg class="g c-muted" aria-hidden="true"><use href="#g-search"/></svg><input type="search" placeholder="Search name, UID or email" aria-label="Search people" data-filter="#recent-list" /></label>
+        <section class="card card--selected" style="padding:14px 16px" aria-label="Selected recipient">
+          <div class="person">
+            <span class="avatar-soft" data-sel-initials>MC</span>
+            <span class="person__text">
+              <span class="person__name" data-sel-name>Maya Chen</span>
+              <span class="person__meta" data-sel-meta>UID 2024-1187 · Biology</span>
+              <span class="person__avail" data-sel-avail><svg class="g14" aria-hidden="true"><use href="#g-user-check"/></svg><span>Likely available now</span></span>
+            </span>
+            <svg class="g22 c-brand" aria-hidden="true"><use href="#g-check-circle"/></svg>
+          </div>
+        </section>
+        <div class="sec-head"><h2 class="sec-title">Recent</h2></div>
+        <div class="card card--list list" id="recent-list" role="radiogroup" aria-label="Recent people" data-select-group>
+        <button type="button" class="row" role="radio" aria-checked="true" data-value="Maya Chen" data-status="likely" data-meta="UID 2024-1187 · Biology">
+          <span class="row__lead row__lead--person">MC</span>
+          <span class="row__text"><span class="row__title">Maya Chen</span><span class="row__status"><svg class="g14 c-brand" aria-hidden="true"><use href="#g-user-check"/></svg><span>Likely available now</span></span></span>
+          <svg class="g row__chev" aria-hidden="true"><use href="#g-chevron-right"/></svg><svg class="g22 row__check" aria-hidden="true"><use href="#g-check-circle"/></svg>
+        </button>
+        <button type="button" class="row" role="radio" aria-checked="false" data-value="Arjun Patel" data-status="closing" data-meta="UID 2023-0442 · Engineering">
+          <span class="row__lead row__lead--person">AP</span>
+          <span class="row__text"><span class="row__title">Arjun Patel</span><span class="row__status"><svg class="g14 c-warning" aria-hidden="true"><use href="#g-clock"/></svg><span>In class until 11:50 AM</span></span></span>
+          <svg class="g row__chev" aria-hidden="true"><use href="#g-chevron-right"/></svg><svg class="g22 row__check" aria-hidden="true"><use href="#g-check-circle"/></svg>
+        </button>
+        <button type="button" class="row" role="radio" aria-checked="false" data-value="Priya Nair" data-status="likely" data-meta="UID 2022-3318 · Chemistry">
+          <span class="row__lead row__lead--person">PN</span>
+          <span class="row__text"><span class="row__title">Priya Nair</span><span class="row__status"><svg class="g14 c-brand" aria-hidden="true"><use href="#g-user-check"/></svg><span>Likely available now</span></span></span>
+          <svg class="g row__chev" aria-hidden="true"><use href="#g-chevron-right"/></svg><svg class="g22 row__check" aria-hidden="true"><use href="#g-check-circle"/></svg>
+        </button>
+        <button type="button" class="row" role="radio" aria-checked="false" data-value="Daniel Okafor" data-status="closing" data-meta="UID 2024-0916 · Business">
+          <span class="row__lead row__lead--person">DO</span>
+          <span class="row__text"><span class="row__title">Daniel Okafor</span><span class="row__status"><svg class="g14 c-warning" aria-hidden="true"><use href="#g-clock"/></svg><span>Usually free after 2:00 PM</span></span></span>
+          <svg class="g row__chev" aria-hidden="true"><use href="#g-chevron-right"/></svg><svg class="g22 row__check" aria-hidden="true"><use href="#g-check-circle"/></svg>
+        </button>
+        </div>
+        <div class="sec-head"><h2 class="sec-title">When</h2></div>
+        <div class="g8">
+        <div class="seg" role="group" aria-label="When" data-seg data-seg-panels="pwhen">
+          <button type="button" class="seg__btn" aria-pressed="true" data-value="now"><svg class="g18" aria-hidden="true"><use href="#g-clock"/></svg>Pickup now</button>
+          <button type="button" class="seg__btn" aria-pressed="false" data-value="schedule"><svg class="g18" aria-hidden="true"><use href="#g-calendar"/></svg>Schedule</button>
+        </div>
+          <p class="hint" data-panel="pwhen:now"><svg class="g16 c-muted" aria-hidden="true"><use href="#i-robot"/></svg>A robot can be at your pickup point in about 4 min.</p>
+        <div data-panel="pwhen:schedule" hidden>
+          <label class="field"><svg class="g c-muted" aria-hidden="true"><use href="#g-calendar"/></svg><select aria-label="Pickup time"><option>Today · 2:00 PM</option><option>Today · 3:30 PM</option><option>Tomorrow · 8:00 AM</option><option>Tomorrow · 10:00 AM</option></select><svg class="g18 c-muted" aria-hidden="true"><use href="#g-chevron-down"/></svg></label>
+        </div>
+        </div>
+        <div class="sec-head"><h2 class="sec-title">Item details</h2><span class="sec-meta">Optional</span></div>
+        <section class="card" style="gap:14px">
+          <p class="card__label">Type</p>
+          <div class="chips" data-chips><button type="button" class="chip" aria-pressed="false" data-value="Documents">Documents</button><button type="button" class="chip" aria-pressed="false" data-value="Keys &amp; ID">Keys &amp; ID</button><button type="button" class="chip" aria-pressed="true" data-value="Electronics">Electronics</button><button type="button" class="chip" aria-pressed="false" data-value="Food">Food</button><button type="button" class="chip" aria-pressed="false" data-value="Other">Other</button></div>
+          <p class="card__label">Size</p>
+          <div class="chips" data-chips data-size><button type="button" class="chip" aria-pressed="true" data-value="Small">Small</button><button type="button" class="chip" aria-pressed="false" data-value="Medium">Medium</button><button type="button" class="chip" aria-pressed="false" data-value="Large">Large</button></div>
+          <p class="code-caption" data-size-hint>Small fits a laptop charger or a stack of papers (30 × 25 × 10 cm).</p>
+          <label class="field field--area"><textarea rows="2" placeholder="Add a note for Maya (optional)" aria-label="Note for recipient" data-note-person></textarea></label>
+        </section>
+        <div class="sec-head"><h2 class="sec-title">Pickup</h2></div>
+        <section class="card card--rows">
+          <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-map-pin"/></svg></span><span class="detail__text"><span class="detail__label">Pickup point · your location</span><span class="detail__value">Student Union · Lobby</span></span><a class="detail__action" href="#" data-toast="Pickup point picker is coming next">Change</a></div>
+        </section>
+      </div>
+
+      <!-- ===== Department ===== -->
+      <div class="g12" data-panel="send:department" hidden style="gap:16px">
+        <div class="notice notice--success" role="note"><svg class="g" aria-hidden="true"><use href="#g-shield-check"/></svg><div class="notice__text"><p class="notice__title">No waiting for a reply</p><p class="notice__body">Department desks accept deliveries automatically during their posted hours.</p></div></div>
+        <label class="field"><svg class="g c-muted" aria-hidden="true"><use href="#g-search"/></svg><input type="search" placeholder="Search departments or buildings" aria-label="Search departments" data-filter="#dept-list" /></label>
+        <div class="sec-head"><h2 class="sec-title">Popular departments</h2><a class="link" href="#" data-toast="Showing 4 of 38 departments">See all</a></div>
+        <div class="card card--list list" id="dept-list" role="radiogroup" aria-label="Departments" data-select-group>
+        <button type="button" class="row" role="radio" aria-checked="true" data-value="Registrar Office" data-status="open">
+          <span class="row__lead"><svg class="g" aria-hidden="true"><use href="#g-building"/></svg></span>
+          <span class="row__text"><span class="row__title">Registrar Office</span><span class="row__status"><svg class="g14 c-success" aria-hidden="true"><use href="#g-check-circle"/></svg><span>Open until 5:00 PM</span></span></span>
+          <svg class="g row__chev" aria-hidden="true"><use href="#g-chevron-right"/></svg><svg class="g22 row__check" aria-hidden="true"><use href="#g-check-circle"/></svg>
+        </button>
+        <button type="button" class="row" role="radio" aria-checked="false" data-value="Library Front Desk" data-status="closing">
+          <span class="row__lead"><svg class="g" aria-hidden="true"><use href="#g-book-open"/></svg></span>
+          <span class="row__text"><span class="row__title">Library Front Desk</span><span class="row__status"><svg class="g14 c-warning" aria-hidden="true"><use href="#g-clock"/></svg><span>Closing in 20 min</span></span></span>
+          <svg class="g row__chev" aria-hidden="true"><use href="#g-chevron-right"/></svg><svg class="g22 row__check" aria-hidden="true"><use href="#g-check-circle"/></svg>
+        </button>
+        <button type="button" class="row" role="radio" aria-checked="false" data-value="IT Help Desk" data-status="open">
+          <span class="row__lead"><svg class="g" aria-hidden="true"><use href="#g-building"/></svg></span>
+          <span class="row__text"><span class="row__title">IT Help Desk</span><span class="row__status"><svg class="g14 c-success" aria-hidden="true"><use href="#g-check-circle"/></svg><span>Open until 6:00 PM</span></span></span>
+          <svg class="g row__chev" aria-hidden="true"><use href="#g-chevron-right"/></svg><svg class="g22 row__check" aria-hidden="true"><use href="#g-check-circle"/></svg>
+        </button>
+        <button type="button" class="row" role="radio" aria-checked="false" data-value="Science Hall Front Desk" data-status="open">
+          <span class="row__lead"><svg class="g" aria-hidden="true"><use href="#g-building"/></svg></span>
+          <span class="row__text"><span class="row__title">Science Hall Front Desk</span><span class="row__status"><svg class="g14 c-success" aria-hidden="true"><use href="#g-check-circle"/></svg><span>Open until 6:00 PM</span></span></span>
+          <svg class="g row__chev" aria-hidden="true"><use href="#g-chevron-right"/></svg><svg class="g22 row__check" aria-hidden="true"><use href="#g-check-circle"/></svg>
+        </button>
+        </div>
+        <div class="sec-head"><h2 class="sec-title">Route</h2></div>
+        <section class="card card--rows">
+          <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-map-pin"/></svg></span><span class="detail__text"><span class="detail__label">Pickup</span><span class="detail__value">Student Union · Lobby</span></span><a class="detail__action" href="#" data-toast="Pickup point picker is coming next">Change</a></div>
+          <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-building"/></svg></span><span class="detail__text"><span class="detail__label">Drop-off · auto-filled</span><span class="detail__value" data-bind="drop">Admin Building · Registrar front desk</span></span></div>
+          <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-clock"/></svg></span><span class="detail__text"><span class="detail__label">Posted hours</span><span class="detail__value" data-bind="hours">Mon–Fri · 8:00 AM – 5:00 PM</span></span></div>
+        </section>
+        <div class="sec-head"><h2 class="sec-title">When</h2></div>
+        <div class="g8">
+        <div class="seg" role="group" aria-label="When" data-seg data-seg-panels="dwhen">
+          <button type="button" class="seg__btn" aria-pressed="true" data-value="now"><svg class="g18" aria-hidden="true"><use href="#g-clock"/></svg>Pickup now</button>
+          <button type="button" class="seg__btn" aria-pressed="false" data-value="schedule"><svg class="g18" aria-hidden="true"><use href="#g-calendar"/></svg>Schedule</button>
+        </div>
+          <p class="hint" data-dept-hint><svg class="g16 c-success" aria-hidden="true"><use href="#g-check-circle"/></svg><span>Arrives well before the desk closes (est. 10:42 AM).</span></p>
+        <div data-panel="dwhen:schedule" hidden>
+          <label class="field"><svg class="g c-muted" aria-hidden="true"><use href="#g-calendar"/></svg><select aria-label="Pickup time"><option>Today · 2:00 PM</option><option>Today · 3:30 PM</option><option>Tomorrow · 8:00 AM</option><option>Tomorrow · 10:00 AM</option></select><svg class="g18 c-muted" aria-hidden="true"><use href="#g-chevron-down"/></svg></label>
+        </div>
+        </div>
+        <div class="sec-head"><h2 class="sec-title">Item details</h2><span class="sec-meta">Optional</span></div>
+        <section class="card" style="gap:14px">
+          <div class="chips" data-chips data-dept-type><button type="button" class="chip" aria-pressed="true" data-value="Documents">Documents</button><button type="button" class="chip" aria-pressed="false" data-value="Keys &amp; ID">Keys &amp; ID</button><button type="button" class="chip" aria-pressed="false" data-value="Electronics">Electronics</button><button type="button" class="chip" aria-pressed="false" data-value="Other">Other</button></div>
+          <label class="field field--area"><textarea rows="2" placeholder="Note for the desk, e.g. “Transcript request form”" aria-label="Note for the desk" data-note-dept></textarea></label>
+        </section>
+      </div>
+    </main>
+    <div class="action-bar" data-panel="send:person">
+      <a class="btn btn--primary" href="ai-decision.html" data-continue-person><span data-label>Continue</span></a>
+      <p class="action-bar__note">You’ll review everything before the robot is sent.</p>
+    </div>
+    <div class="action-bar" data-panel="send:department" hidden>
+      <a class="btn btn--primary" href="review.html" data-continue-dept><span data-label>Review &amp; send</span></a>
+      <p class="action-bar__note">The desk accepts on arrival — you can walk away once it’s loaded.</p>
+    </div>
+  </div>
+  <div class="toast" data-toast-el role="status" aria-live="polite"></div>
+  <script src="js/icons.js?v=4"></script>
+  <script src="js/routemap.js?v=4"></script>
+  <script src="js/flow.js?v=4"></script>
+  <script>
+(function(){
+  const {$, $$, store} = window.VYN;
+  // Search filters the list it points at
+  $$('[data-filter]').forEach(inp => inp.addEventListener('input', () => {
+    const q = inp.value.trim().toLowerCase();
+    $$('.row', $(inp.dataset.filter)).forEach(r => { r.hidden = q && !r.textContent.toLowerCase().includes(q); });
+  }));
+  // Person selection updates the recipient card
+  const list = $('#recent-list');
+  list.addEventListener('rowselect', e => {
+    const r = e.detail, name = r.dataset.value;
+    $('[data-sel-name]').textContent = name;
+    $('[data-sel-initials]').textContent = name.split(' ').map(p => p[0]).join('');
+    $('[data-sel-meta]').textContent = r.dataset.meta;
+    const avail = $('[data-sel-avail]');
+    const likely = r.dataset.status === 'likely';
+    avail.classList.toggle('person__avail--warn', !likely);
+    avail.querySelector('use').setAttribute('href', likely ? '#g-user-check' : '#g-clock');
+    avail.querySelector('span').textContent = r.querySelector('.row__status span').textContent;
+    $('[data-note-person]').placeholder = `Add a note for ${name.split(' ')[0]} (optional)`;
+  });
+  const sizes = {Small: 'Small fits a laptop charger or a stack of papers (30 × 25 × 10 cm).', Medium: 'Medium fits a textbook or a small box (40 × 30 × 20 cm).', Large: 'Large fits a backpack or a lab kit (55 × 40 × 30 cm).'};
+  $('[data-size]').addEventListener('chipchange', e => { $('[data-size-hint]').textContent = sizes[e.detail]; });
+  // Department selection updates route, hours and the next step
+  const DEPTS = {
+    'Registrar Office': {drop: 'Admin Building · Registrar front desk', hours: 'Mon–Fri · 8:00 AM – 5:00 PM'},
+    'Library Front Desk': {drop: 'Marriott Library · Front desk', hours: 'Today · closes at 5:00 PM', closing: true},
+    'IT Help Desk': {drop: 'Tech Commons · IT Help Desk', hours: 'Mon–Fri · 8:00 AM – 6:00 PM'},
+    'Science Hall Front Desk': {drop: 'Science Hall · Front desk', hours: 'Mon–Sat · 7:30 AM – 6:00 PM'},
+  };
+  let dept = 'Registrar Office';
+  const hint = $('[data-dept-hint]');
+  $('#dept-list').addEventListener('rowselect', e => {
+    dept = e.detail.dataset.value;
+    const d = DEPTS[dept];
+    $('[data-bind="drop"]').textContent = d.drop;
+    $('[data-bind="hours"]').textContent = d.hours;
+    hint.querySelector('use').setAttribute('href', d.closing ? '#g-alert-triangle' : '#g-check-circle');
+    hint.querySelector('svg').setAttribute('class', 'g16 ' + (d.closing ? 'c-warning' : 'c-success'));
+    hint.querySelector('span').textContent = d.closing ? 'This desk may close before the robot arrives.' : 'Arrives well before the desk closes (est. 10:42 AM).';
+    $('[data-continue-dept]').setAttribute('href', d.closing ? 'department-closing.html' : 'review.html');
+  });
+  const typeOf = sel => ($(sel + ' .chip[aria-pressed="true"]') || {}).textContent || '';
+  $('[data-continue-dept]').addEventListener('click', () => {
+    store.set('dept', {name: dept, drop: DEPTS[dept].drop, item: typeOf('[data-dept-type]') || 'Documents', note: $('[data-note-dept]').value.trim()});
+  });
+  $('[data-continue-person]').addEventListener('click', () => {
+    store.set('person', {name: $('[data-sel-name]').textContent, initials: $('[data-sel-initials]').textContent, item: typeOf('[data-chips]:not([data-size])') || 'Electronics', size: typeOf('[data-size]') || 'Small'});
+  });
+})();
+</script>
+</body>
+</html>

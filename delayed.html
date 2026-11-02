@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f2f5fa" />
+  <title>VYN — Delivery delayed</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/flow.css?v=4" />
+</head>
+<body class="flow">
+  <div class="screen screen--flow">
+    <main class="flow-content" id="main">
+      <header class="topbar">
+        <a class="back-btn" href="index.html" data-back aria-label="Back"><svg class="g" aria-hidden="true"><use href="#g-arrow-left"/></svg></a>
+        <h1 class="topbar__title">Delivery update</h1>
+        <a class="topbar__trail" href="#" data-toast="Help opens a chat with campus delivery support">Help</a>
+      </header>
+
+      <section class="card" aria-label="Delivery status">
+        <div class="status-row"><span class="status-chip status-chip--warning"><svg class="g" aria-hidden="true"><use href="#g-clock"/></svg><span data-chip-label>Delayed</span></span><span class="sec-meta">Documents · Small</span></div>
+        <div class="headline"><p class="headline__title">Now arriving in 14 min</p><p class="headline__sub">Was 6 min · new estimate 10:56 AM at Registrar front desk</p></div>
+        <div class="route-map" style="--ar:329/170" data-route="A,N1,N2,N3,E" data-cur="1,0.3" data-blocked="B,C,D" data-cur-label="Your package" data-dest-label="Registrar Office" role="img" aria-label="New route around a closed path near Engineering Quad"></div>
+        <div class="legend"><span><i></i>New route</span><span><i class="is-closed"></i>Path closed</span></div>
+      </section>
+      <div class="notice notice--success" role="note"><svg class="g" aria-hidden="true"><use href="#g-shield-check"/></svg><div class="notice__text"><p class="notice__title">Your item is secure</p><p class="notice__body">The compartment stays locked. Only the desk’s pickup code can open it.</p></div></div>
+      <div class="sec-head"><h2 class="sec-title">Why it happened</h2></div>
+      <section class="card" style="gap:8px">
+        <p style="font-size:14px;line-height:20px">A maintenance barrier is blocking the path near Engineering Quad, so the robot is taking a longer, safe route.</p>
+        <p class="sec-meta">Detected at 10:36 AM · reroute approved by the operations team</p>
+      </section>
+      <div class="sec-head"><h2 class="sec-title">What you can do</h2></div>
+      <div class="g8" role="radiogroup" aria-label="What you can do">
+        <label class="option-card"><input type="radio" name="delay" value="keep" checked data-cta="Keep this delivery" data-href="tracking.html" data-icon="check" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Keep this delivery</span><span class="badge">Recommended</span></span><span class="option-card__desc">Still arrives well before the desk closes. No action needed from you.</span></span></label>
+        <label class="option-card"><input type="radio" name="delay" value="reassign" data-cta="Reassign handoff" data-href="review.html" data-icon="route" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Reassign handoff</span></span><span class="option-card__desc">Deliver to Engineering front desk instead · arrives in 5 min.</span></span></label>
+        <label class="option-card"><input type="radio" name="delay" value="return" data-cta="Return package to me" data-href="tracking.html" data-icon="undo" data-toast-msg="Returning to Student Union · Lobby" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Return package to me</span></span><span class="option-card__desc">Back to Student Union · Lobby in about 8 min.</span></span></label>
+      </div>
+    </main>
+    <div class="action-bar">
+      <a class="btn btn--primary" href="tracking.html" data-cta-for="delay" data-loading="Updating…"><svg class="g" aria-hidden="true"><use href="#g-check"/></svg><span data-label>Keep this delivery</span></a>
+      <a class="btn btn--ghost" href="#" data-toast="Support usually replies within 2 min"><svg class="g" aria-hidden="true"><use href="#g-message"/></svg><span data-label>Contact support</span></a>
+      
+    </div>
+  </div>
+  <div class="toast" data-toast-el role="status" aria-live="polite"></div>
+  <script src="js/icons.js?v=4"></script>
+  <script src="js/routemap.js?v=4"></script>
+  <script src="js/flow.js?v=4"></script>
+
+</body>
+</html>

@@ -21,18 +21,14 @@
   });
 
   /* ---------------- Bottom navigation ---------------- */
-  const TAB_LABELS = { deliveries: "Deliveries", campus: "Campus map", more: "More" };
   document.querySelectorAll("[data-nav] .nav-item").forEach((item) => {
     item.addEventListener("click", (e) => {
-      e.preventDefault();
       const tab = item.dataset.tab;
+      if (tab !== "home" && tab !== "campus") return; // real pages: let the link navigate
+      e.preventDefault();
       if (tab === "campus" && window.VYNMap) {
         window.VYNMap.centerOnUser();
         document.querySelector(".map-card").scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-      if (tab !== "home" && tab !== "campus") {
-        toast(`${TAB_LABELS[tab]} is coming next`);
-        return;
       }
       document.querySelectorAll(".nav-item").forEach((n) => {
         const on = n.dataset.tab === tab;

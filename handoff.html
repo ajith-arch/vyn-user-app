@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f2f5fa" />
+  <title>VYN — Pick up delivery</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/flow.css?v=4" />
+</head>
+<body class="flow">
+  <div class="screen screen--flow">
+    <main class="flow-content" id="main">
+      <header class="topbar">
+        <a class="back-btn" href="index.html" data-back aria-label="Back"><svg class="g" aria-hidden="true"><use href="#g-arrow-left"/></svg></a>
+        <h1 class="topbar__title">Pick up delivery</h1>
+        <a class="topbar__trail" href="#" data-toast="Help opens a chat with campus delivery support">Help</a>
+      </header>
+
+      <section class="card" aria-label="Delivery arrived">
+        <span class="status-chip status-chip--success"><svg class="g" aria-hidden="true"><use href="#g-check-circle"/></svg><span data-chip-label>Arrived</span></span>
+        <div class="headline"><p class="headline__title">Your delivery is here</p><p class="headline__sub">Waiting at Science Hall · Main entrance</p></div>
+        <div class="route-map" style="--ar:329/120" data-route="C,D,E" data-no-start data-dest-glyph="package" data-dest-label="Robot with your package" role="img" aria-label="Robot waiting at Science Hall main entrance"></div>
+        <div class="hold" data-countdown-wrap>
+          <svg class="g18" aria-hidden="true"><use href="#g-timer"/></svg>
+          <div class="hold__text"><p class="hold__title" data-expired-title="Moved to Science Hall front desk">Held for you for <span data-countdown="292">4:52</span> more</p><p class="hold__sub">After that it goes safely to the Science Hall front desk.</p></div>
+        </div>
+      </section>
+      <section class="card card--center" aria-label="Verify pickup">
+        <p class="card__label" style="font-size:14px;line-height:20px">Your pickup code</p>
+        <div class="code" role="img" aria-label="Pickup code 7 3 0 5"><span class="code__digit" aria-hidden="true">7</span><span class="code__digit" aria-hidden="true">3</span><span class="code__digit" aria-hidden="true">0</span><span class="code__digit" aria-hidden="true">5</span></div>
+        <p class="code-caption">Enter it on the robot’s keypad, or scan the QR code on the lid.</p>
+        <a class="btn btn--tonal" href="#" data-toast="Point your camera at the QR code on the robot’s lid"><svg class="g" aria-hidden="true"><use href="#g-scan"/></svg><span data-label>Scan QR on robot</span></a>
+      </section>
+      <div data-opened hidden><div class="notice notice--success" role="note"><svg class="g" aria-hidden="true"><use href="#g-lock-open"/></svg><div class="notice__text"><p class="notice__title">Compartment open</p><p class="notice__body">Take your lab notebook and close the lid to finish the handoff.</p></div></div></div>
+      <div class="sec-head"><h2 class="sec-title">Package</h2></div>
+      <section class="card card--rows">
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-user"/></svg></span><span class="detail__text"><span class="detail__label">From</span><span class="detail__value">Maya Chen</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-package"/></svg></span><span class="detail__text"><span class="detail__label">Item</span><span class="detail__value">Lab notebook · Small</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-map-pin"/></svg></span><span class="detail__text"><span class="detail__label">Handoff point</span><span class="detail__value">Science Hall · Main entrance</span></span></div>
+      </section>
+      <div class="sec-head"><h2 class="sec-title">How to collect</h2></div>
+      <section class="card">
+        <ol class="steps" data-collect><li class="step">Find VYN-07 by the main entrance — its light ring glows blue.</li><li class="step">Unlock with your code, the QR scan, or the button below.</li><li class="step">Take your item and close the lid. That confirms the handoff.</li></ol>
+      </section>
+    </main>
+    <div class="action-bar">
+      <a class="btn btn--primary" href="#" data-unlock><svg class="g" aria-hidden="true"><use href="#g-lock-open"/></svg><span data-label>Unlock compartment</span></a>
+      <a class="btn btn--ghost" href="#" data-toast="VYN-07 is flashing its lights and chiming now"><svg class="g" aria-hidden="true"><use href="#g-help-circle"/></svg><span data-label>I can’t find the robot</span></a>
+      
+    </div>
+  </div>
+  <div class="toast" data-toast-el role="status" aria-live="polite"></div>
+  <script src="js/icons.js?v=4"></script>
+  <script src="js/routemap.js?v=4"></script>
+  <script src="js/flow.js?v=4"></script>
+  <script>
+(function(){
+  const {$, $$, toast} = window.VYN;
+  const b = $('[data-unlock]'), label = $('[data-label]', b), use = $('use', b);
+  let state = 'locked';
+  b.addEventListener('click', e => {
+    e.preventDefault();
+    if (state === 'locked') {
+      state = 'busy'; b.classList.add('is-loading'); use.setAttribute('href', '#g-loader'); label.textContent = 'Unlocking…';
+      setTimeout(() => {
+        state = 'open'; b.classList.remove('is-loading'); use.setAttribute('href', '#g-check'); label.textContent = 'I’ve taken my item';
+        $('[data-opened]').hidden = false;
+        const s = $$('[data-collect] .step'); s[0].classList.add('is-done'); s[1].classList.add('is-done');
+        toast('Compartment unlocked');
+      }, 1000);
+    } else if (state === 'open') {
+      state = 'done'; toast('Handoff confirmed · Maya has been notified');
+      setTimeout(() => { location.href = 'index.html'; }, 1200);
+    }
+  });
+})();
+</script>
+</body>
+</html>

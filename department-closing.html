@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f2f5fa" />
+  <title>VYN — Department closing</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/flow.css?v=4" />
+</head>
+<body class="flow">
+  <div class="screen screen--flow">
+    <main class="flow-content" id="main">
+      <header class="topbar">
+        <a class="back-btn" href="send.html#department" data-back aria-label="Back"><svg class="g" aria-hidden="true"><use href="#g-arrow-left"/></svg></a>
+        <h1 class="topbar__title">Send item</h1>
+        <a class="topbar__trail" href="#" data-toast="Help opens a chat with campus delivery support">Help</a>
+      </header>
+
+      <div class="card card--list list" aria-label="Selected department">
+        <a class="row" href="send.html#department"><span class="row__lead"><svg class="g" aria-hidden="true"><use href="#g-book-open"/></svg></span><span class="row__text"><span class="row__title">Library Front Desk</span><span class="row__status"><svg class="g14 c-warning" aria-hidden="true"><use href="#g-clock"/></svg><span>Closes at 5:00 PM · in 12 min</span></span></span><svg class="g row__chev" aria-hidden="true"><use href="#g-chevron-right"/></svg></a>
+      </div>
+      <div class="notice notice--warning" role="note"><svg class="g" aria-hidden="true"><use href="#g-alert-triangle"/></svg><div class="notice__text"><p class="notice__title">This desk closes before the robot arrives</p><p class="notice__body">We’ve paused this request so your item isn’t left without anyone to receive it.</p></div></div>
+      <section class="card card--rows" aria-label="Timing">
+        <div class="timing"><svg class="g18 c-muted" aria-hidden="true"><use href="#g-clock"/></svg><span class="timing__label">Now</span><span class="timing__value">4:48 PM</span></div>
+        <div class="timing"><svg class="g18 c-warning" aria-hidden="true"><use href="#g-building"/></svg><span class="timing__label">Desk closes</span><span class="timing__value c-warning">5:00 PM</span></div>
+        <div class="timing"><svg class="g18 c-critical" aria-hidden="true"><use href="#g-alert-triangle"/></svg><span class="timing__label">Robot would arrive</span><span class="timing__value c-critical">5:06 PM</span></div>
+      </section>
+      <div class="sec-head"><h2 class="sec-title">Choose what to do</h2></div>
+      <div class="g8" role="radiogroup" aria-label="Choose what to do">
+        <label class="option-card"><input type="radio" name="plan" value="schedule" checked data-cta="Schedule for 8:00 AM" data-href="index.html" data-icon="calendar" data-toast-msg="Scheduled for tomorrow · 8:00 AM" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Schedule for the next open window</span><span class="badge">Recommended</span></span><span class="option-card__desc">Tomorrow · 8:00 AM. A robot collects from you at 7:45 AM, and we’ll remind you the night before.</span></span></label>
+        <label class="option-card"><input type="radio" name="plan" value="library" data-cta="Send to Main Library" data-href="review.html" data-icon="send" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Send to Main Library · Circulation</span></span><span class="option-card__desc">Open until 10:00 PM · same building · arrives 4:57 PM.</span></span></label>
+        <label class="option-card"><input type="radio" name="plan" value="person" data-cta="Choose a person" data-href="send.html#person" data-icon="user" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Send to a person instead</span></span><span class="option-card__desc">Choose someone who can receive it right now.</span></span></label>
+      </div>
+      <p class="why"><svg class="g16" aria-hidden="true"><use href="#g-info"/></svg><span>Why can’t I send now? Departments only accept during posted hours. Sending anyway would leave your item locked in a robot after closing.</span></p>
+    </main>
+    <div class="action-bar">
+      <a class="btn btn--primary" href="index.html" data-cta-for="plan" data-loading="Saving…"><svg class="g" aria-hidden="true"><use href="#g-calendar"/></svg><span data-label>Schedule for 8:00 AM</span></a>
+      <a class="btn btn--secondary" href="send.html#department"><svg class="g" aria-hidden="true"><use href="#g-building"/></svg><span data-label>Choose another department</span></a>
+      
+    </div>
+  </div>
+  <div class="toast" data-toast-el role="status" aria-live="polite"></div>
+  <script src="js/icons.js?v=4"></script>
+  <script src="js/routemap.js?v=4"></script>
+  <script src="js/flow.js?v=4"></script>
+
+</body>
+</html>

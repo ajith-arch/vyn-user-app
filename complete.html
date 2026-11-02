@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f2f5fa" />
+  <title>VYN — Delivery complete</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/flow.css?v=4" />
+</head>
+<body class="flow">
+  <div class="screen screen--flow">
+    <main class="flow-content" id="main">
+      <header class="topbar">
+        <a class="back-btn" href="index.html" data-back aria-label="Back"><svg class="g" aria-hidden="true"><use href="#g-arrow-left"/></svg></a>
+        <h1 class="topbar__title">Delivery complete</h1>
+        <span></span>
+      </header>
+
+      <div class="confirm-hero" style="padding-top:12px">
+        <span class="confirm-hero__icon confirm-hero__icon--lg pop-in"><svg class="g" aria-hidden="true"><use href="#g-check"/></svg></span>
+        <p class="confirm-hero__title">Delivered</p>
+        <p class="confirm-hero__sub">Registrar Office received your documents at 10:41 AM.</p>
+      </div>
+      <section class="card card--rows" aria-label="Delivery summary">
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-file-text"/></svg></span><span class="detail__text"><span class="detail__label">Item</span><span class="detail__value">Documents · Small</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-building"/></svg></span><span class="detail__text"><span class="detail__label">Delivered to</span><span class="detail__value">Registrar Office · front desk</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-clock"/></svg></span><span class="detail__text"><span class="detail__label">Delivered at</span><span class="detail__value">10:41 AM · 1 min earlier than estimated</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-shield-check"/></svg></span><span class="detail__text"><span class="detail__label">Received by</span><span class="detail__value">Front desk staff · verified with code</span></span></div>
+      </section>
+      <section class="card" style="gap:14px" aria-label="Feedback">
+        <div class="g8" style="gap:2px"><h2 class="sec-title">How did it go?</h2><p class="sec-meta">Optional · helps us improve campus delivery</p></div>
+        <div class="stars" role="radiogroup" aria-label="Rating" data-stars="4">
+          <button type="button" class="star-btn" role="radio" aria-label="1 star"><svg class="g" aria-hidden="true"><use href="#g-star"/></svg></button><button type="button" class="star-btn" role="radio" aria-label="2 stars"><svg class="g" aria-hidden="true"><use href="#g-star"/></svg></button><button type="button" class="star-btn" role="radio" aria-label="3 stars"><svg class="g" aria-hidden="true"><use href="#g-star"/></svg></button><button type="button" class="star-btn" role="radio" aria-label="4 stars"><svg class="g" aria-hidden="true"><use href="#g-star"/></svg></button><button type="button" class="star-btn" role="radio" aria-label="5 stars"><svg class="g" aria-hidden="true"><use href="#g-star"/></svg></button>
+        </div>
+        <p class="sec-meta" style="text-align:center" data-stars-out aria-live="polite"></p>
+        <div class="chips" data-multi>
+          <button type="button" class="chip" aria-pressed="true">On time</button><button type="button" class="chip" aria-pressed="true">Easy handoff</button><button type="button" class="chip" aria-pressed="false">Clear updates</button><button type="button" class="chip" aria-pressed="false">Something went wrong</button>
+        </div>
+      </section>
+    </main>
+    <div class="action-bar">
+      <a class="btn btn--primary" href="send.html#department"><svg class="g" aria-hidden="true"><use href="#g-send"/></svg><span data-label>Send another item</span></a>
+      <a class="btn btn--secondary" href="#" data-toast="Delivery history is coming next"><svg class="g" aria-hidden="true"><use href="#g-clock"/></svg><span data-label>View delivery history</span></a>
+      
+    </div>
+  </div>
+  <div class="toast" data-toast-el role="status" aria-live="polite"></div>
+  <script src="js/icons.js?v=4"></script>
+  <script src="js/routemap.js?v=4"></script>
+  <script src="js/flow.js?v=4"></script>
+  <script>
+document.querySelectorAll('[data-multi] .chip').forEach(c => c.addEventListener('click', () => c.setAttribute('aria-pressed', String(c.getAttribute('aria-pressed') !== 'true'))));
+</script>
+</body>
+</html>

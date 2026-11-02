@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f2f5fa" />
+  <title>VYN — Review delivery</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/flow.css?v=4" />
+</head>
+<body class="flow">
+  <div class="screen screen--flow">
+    <main class="flow-content" id="main">
+      <header class="topbar">
+        <a class="back-btn" href="send.html#person" data-back aria-label="Back"><svg class="g" aria-hidden="true"><use href="#g-arrow-left"/></svg></a>
+        <h1 class="topbar__title">Review delivery</h1>
+        <span></span>
+      </header>
+
+      <section class="card" style="padding:14px 16px" aria-label="Recipient">
+        <div class="person">
+          <span class="avatar-soft" data-bind="initials">MC</span>
+          <span class="person__text"><span class="person__name" data-bind="to">To Maya Chen</span><span class="person__meta" data-bind="item">Laptop charger · Small · Pickup now</span></span>
+          <a class="detail__action" href="send.html#person">Change</a>
+        </div>
+      </section>
+      <section class="ai-card" aria-label="Availability suggestion">
+        <div class="ai-card__head"><span class="ai-card__icon"><svg class="g18" aria-hidden="true"><use href="#g-sparkles"/></svg></span><p class="ai-card__title" data-bind="ai-title">Maya may not be free when it arrives</p></div>
+        <p class="ai-card__body" data-bind="ai-body">She’s usually in class on Tuesdays until 11:50 AM. The robot would reach Science Hall at 10:42 AM.</p>
+        <div class="ai-card__conf"><span class="status-chip status-chip--onsoft"><svg class="g" aria-hidden="true"><use href="#g-info"/></svg><span data-chip-label>Medium confidence</span></span><span>From her shared class schedule + 6 past deliveries</span></div>
+        <p class="ai-card__fine">Signals stay coarse and campus-only. We never show anyone’s exact location.</p>
+      </section>
+      <div class="sec-head"><h2 class="sec-title">Choose how to send</h2></div>
+      <div class="g8" role="radiogroup" aria-label="Choose how to send">
+        <label class="option-card"><input type="radio" name="dest" value="desk" checked data-cta="Confirm &amp; send to front desk" data-href="assigned.html" data-icon="send" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Science Hall front desk</span><span class="badge">Suggested</span></span><span class="option-card__desc">Maya’s building · open until 6:00 PM. She gets a pickup code and can collect any time today. Arrives 10:44 AM.</span></span></label>
+        <label class="option-card"><input type="radio" name="dest" value="office" data-cta="Confirm &amp; send to Biology office" data-href="assigned.html" data-icon="send" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Biology Department office</span></span><span class="option-card__desc">Floor 2, Science Hall · open until 5:00 PM · arrives 10:46 AM.</span></span></label>
+        <label class="option-card"><input type="radio" name="dest" value="anyway" data-cta="Send to Maya anyway" data-href="assigned.html" data-icon="send" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Send to Maya anyway</span></span><span class="option-card__desc">The robot waits up to 5 min. If she doesn’t come, it goes to the front desk.</span></span></label>
+      </div>
+      <p class="why"><svg class="g16" aria-hidden="true"><use href="#g-user"/></svg><span>You decide — VYN only suggests. Nothing is sent until you confirm.</span></p>
+    </main>
+    <div class="action-bar">
+      <a class="btn btn--primary" href="assigned.html" data-cta-for="dest" data-loading="Sending…"><svg class="g" aria-hidden="true"><use href="#g-send"/></svg><span data-label>Confirm &amp; send to front desk</span></a>
+      <a class="btn btn--ghost" href="send.html#person"><svg class="g" aria-hidden="true"><use href="#g-user"/></svg><span data-label>Choose a different recipient</span></a>
+      
+    </div>
+  </div>
+  <div class="toast" data-toast-el role="status" aria-live="polite"></div>
+  <script src="js/icons.js?v=4"></script>
+  <script src="js/routemap.js?v=4"></script>
+  <script src="js/flow.js?v=4"></script>
+  <script>
+(function(){
+  const p = window.VYN.store.get('person', null);
+  if (!p || p.name === 'Maya Chen') return;
+  const first = p.name.split(' ')[0];
+  const set = (k, v) => { const el = document.querySelector(`[data-bind="${k}"]`); if (el) el.textContent = v; };
+  set('initials', p.initials); set('to', `To ${p.name}`); set('item', `${p.item} · ${p.size} · Pickup now`);
+  set('ai-title', `${first} may not be free when it arrives`);
+  set('ai-body', `${first} is often away from their building at this time. The robot would arrive at 10:42 AM.`);
+  document.querySelectorAll('.option-card__title, .option-card__desc').forEach(el => { el.textContent = el.textContent.replace(/Maya’s/g, `${first}’s`).replace(/Maya/g, first).replace(/She gets/g, 'They get').replace(/she doesn’t/g, 'they don’t'); });
+  document.querySelector('[data-cta-for] [data-label]').textContent = document.querySelector('input[name="dest"]:checked').dataset.cta;
+  document.querySelectorAll('input[name="dest"]').forEach(i => { if (i.dataset.cta) i.dataset.cta = i.dataset.cta.replace('Maya', first); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f2f5fa" />
+  <title>VYN — Delivery update</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/flow.css?v=4" />
+</head>
+<body class="flow">
+  <div class="screen screen--flow">
+    <main class="flow-content" id="main">
+      <header class="topbar">
+        <a class="back-btn" href="index.html" data-back aria-label="Back"><svg class="g" aria-hidden="true"><use href="#g-arrow-left"/></svg></a>
+        <h1 class="topbar__title">Delivery update</h1>
+        <a class="topbar__trail" href="#" data-toast="Help opens a chat with campus delivery support">Help</a>
+      </header>
+
+      <div class="notice notice--warning" role="note"><svg class="g" aria-hidden="true"><use href="#g-alert-triangle"/></svg><div class="notice__text"><p class="notice__title">Maya hasn’t responded yet</p><p class="notice__body">The robot has waited 5 min at Science Hall. Your laptop charger is still locked inside.</p></div></div>
+      <section class="card card--rows" aria-label="Current state">
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-map-pin"/></svg></span><span class="detail__text"><span class="detail__label">Robot is at</span><span class="detail__value">Science Hall · Main entrance</span></span></div>
+        <div class="detail"><span class="detail__tile"><svg class="g" aria-hidden="true"><use href="#g-shield-check"/></svg></span><span class="detail__text"><span class="detail__label">Your item</span><span class="detail__value">Locked and secure in the compartment</span></span></div>
+      </section>
+      <div class="sec-head"><h2 class="sec-title">Recommended next step</h2></div>
+      <div class="g8" role="radiogroup" aria-label="What should happen next">
+        <label class="option-card"><input type="radio" name="next" value="desk" checked data-cta="Send to front desk" data-href="tracking.html" data-icon="building" data-toast-msg="Sent to Science Hall front desk · Maya gets a pickup code" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Leave it at Science Hall front desk</span><span class="badge">Recommended</span></span><span class="option-card__desc">Approved desk in Maya’s building · open until 6:00 PM. Arrives in 3 min, and Maya gets a pickup code.</span></span></label>
+        <p class="why"><svg class="g16" aria-hidden="true"><use href="#g-info"/></svg><span>Why this? It’s the closest approved desk on the robot’s current route, so the item stays secure and Maya can collect it any time today.</span></p>
+      </div>
+      <div class="sec-head"><h2 class="sec-title">Other options</h2></div>
+      <div class="g8">
+        <label class="option-card"><input type="radio" name="next" value="retry" data-cta="Notify Maya again" data-href="#" data-icon="bell" data-toast-msg="Maya notified · waiting up to 5 more min" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Try Maya again</span></span><span class="option-card__desc">We’ll notify her once more and wait up to 5 more minutes.</span></span></label>
+        <label class="option-card"><input type="radio" name="next" value="later" data-cta="Choose a new time" data-href="send.html#person" data-icon="calendar" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Reschedule</span></span><span class="option-card__desc">Pick a new delivery window. The item is held at the nearest desk until then.</span></span></label>
+        <label class="option-card"><input type="radio" name="next" value="return" data-cta="Return it to me" data-href="tracking.html" data-icon="undo" data-toast-msg="Returning to Student Union · Lobby" /><span class="option-card__radio" aria-hidden="true"></span><span class="option-card__text"><span class="option-card__head"><span class="option-card__title">Return it to me</span></span><span class="option-card__desc">Back to Student Union · Lobby in about 9 min.</span></span></label>
+      </div>
+    </main>
+    <div class="action-bar">
+      <a class="btn btn--primary" href="tracking.html" data-cta-for="next" data-loading="Updating…"><svg class="g" aria-hidden="true"><use href="#g-building"/></svg><span data-label>Send to front desk</span></a>
+      <a class="btn btn--ghost" href="#" data-toast="Support usually replies within 2 min"><svg class="g" aria-hidden="true"><use href="#g-message"/></svg><span data-label>Contact support</span></a>
+      
+    </div>
+  </div>
+  <div class="toast" data-toast-el role="status" aria-live="polite"></div>
+  <script src="js/icons.js?v=4"></script>
+  <script src="js/routemap.js?v=4"></script>
+  <script src="js/flow.js?v=4"></script>
+
+</body>
+</html>
